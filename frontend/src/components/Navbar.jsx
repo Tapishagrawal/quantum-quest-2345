@@ -21,11 +21,11 @@ export const Navbar = ({handleToggleMenu}) => {
                 </Link>
                 <div className='flex items-center bg-[#1b2635] shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)] gap-3 px-3 py-1 rounded-md'>
                     <div>
-                        <img className='rounded-full' src="https://placehold.co/45" alt="" />
+                        <img className='rounded-full' src="https://placehold.co/40" alt="" />
                     </div>
                     <div>
-                        <p>User Name</p>
-                        <p>View profile</p>
+                        <p className='text-slate-400 text-xs'>User Name</p>
+                        <p className='text-slate-400 text-xs'>View profile</p>
                     </div>
                 </div>
             </div>
