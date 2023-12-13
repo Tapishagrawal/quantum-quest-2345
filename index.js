@@ -14,6 +14,7 @@ app.get("/", (req,res)=>{
 app.listen(process.env.port, async()=>{
     try {
         await connection
+        console.log("database connected");
         console.log(`http://localhost:${process.env.port}`)
     } catch (error) {
         console.log("Error in connection the Database.")
