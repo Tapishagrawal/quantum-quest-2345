@@ -1,10 +1,11 @@
 import './App.css'
+import { SideMenu } from './components/SideMenu'
 
 function App() {
 
   return (
     <>
-      <h1>welcome to Gameswap!</h1>
+      <SideMenu/>
     </>
   )
 }
