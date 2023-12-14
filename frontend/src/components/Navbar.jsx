@@ -6,7 +6,7 @@ import { IoBag } from "react-icons/io5";
 
 export const Navbar = ({handleToggleMenu}) => {
     return (
-        <div className='flex justify-between items-center z-50'>
+        <div className='flex justify-between items-center z-50 py-3 bg-[#0d171f9d] backdrop-blur-sm'>
             <Link className='text-xl' onClick={handleToggleMenu}>
                 <BiSliderAlt />
             </Link>
@@ -21,7 +21,7 @@ export const Navbar = ({handleToggleMenu}) => {
                 </Link>
                 <div className='flex items-center bg-[#1b2635] shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)] gap-3 px-3 py-1 rounded-md'>
                     <div>
-                        <img className='rounded-full' src="https://placehold.co/40" alt="" />
+                        <img className='rounded-full' src="https://placehold.co/28" alt="" />
                     </div>
                     <div>
                         <p className='text-slate-400 text-xs'>User Name</p>
