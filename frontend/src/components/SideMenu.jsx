@@ -39,7 +39,7 @@ const links = [
 export const SideMenu = ({ toggleMenu }) => {
     const [navlinks, setNavLinks] = useState(links)
     return (
-        <div className={` ${toggleMenu ? "w-[20%]" : "w-[5%]"} h-[96vh] rounded-2xl p-7 shadow-[-5px_-5px_15px_rgba(255,255,255,0.1),5px_5px_15px_rgb(16,6,54,0.60)] transition-all duration-700 overflow-auto`}>
+        <div className={` ${toggleMenu ? "w-[20%]" : "w-[5%]"} h-[96vh] rounded-2xl p-7 shadow-[-5px_-5px_15px_rgba(255,255,255,0.1),5px_5px_15px_rgb(16,6,54,0.60)] transition-all duration-700 overflow-hidden`}>
             <Link to={"/"} className={`${toggleMenu ? "justify-start" : "justify-center"} text-3xl flex items-center gap-3`}>
                 <div>
                     <TbDeviceGamepad2 />
