@@ -5,6 +5,7 @@ const { userRouter } = require("./routes/user.routes");
 require("dotenv").config();
 const cors = require("cors");
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
