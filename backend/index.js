@@ -1,5 +1,6 @@
 const express = require("express");
 const { connection } = require("./db");
+
 const { userRouter } = require("./routes/user.routes");
 const { gameRouter } = require("./routes/game.routes");
 
@@ -30,3 +31,4 @@ app.listen(process.env.port, async () => {
     console.log(error);
   }
 });
+
