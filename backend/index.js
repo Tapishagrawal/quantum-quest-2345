@@ -3,9 +3,11 @@ const { connection } = require("./db");
 
 const { userRouter } = require("./routes/user.routes");
 const { gameRouter } = require("./routes/game.routes");
+const { categoryRouter } = require("./routes/categoryy.routes");
 
 require("dotenv").config();
 const cors = require("cors");
+
 
 
 
@@ -15,6 +17,8 @@ app.use(express.json());
 
 app.use("/users", userRouter);
 app.use("/games",gameRouter)
+app.use("/cates",categoryRouter)
+
 
 
 app.get("/", (req, res) => {
