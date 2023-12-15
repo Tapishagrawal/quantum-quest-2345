@@ -4,7 +4,7 @@ import 'swiper/css';
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation"
 import "./gameSwiper.css"
-import data from "../api/gameSlider.json"
+import data from "../../api/gameSlider.json"
 import { EffectCoverflow, Navigation, Autoplay } from "swiper/modules";
 import { FaPause } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
@@ -21,7 +21,7 @@ export const GameSwiper = () => {
         const loadImages = async () => {
             const loadedImages = await Promise.all(
                 data.map(async (game) => {
-                    const { default: image } = await import(/* @vite-ignore */ `../assets/games/${game.img}`);
+                    const { default: image } = await import(/* @vite-ignore */ `../../assets/games/${game.img}`);
                     return { ...game, image };
                 })
             );
@@ -32,7 +32,7 @@ export const GameSwiper = () => {
         loadImages();
     }, []);
     return (
-        <div>
+        <div className='-z-0'>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -56,14 +56,15 @@ export const GameSwiper = () => {
             >
                 {
                     grameSwiperData.map((game) => (
-                        <SwiperSlide key={game._id} className='w-[500px] h-[220px]'>
-                            <div className='gameSlider relative w-full h-full bg-center bg-cover p-7 overflow-hidden after:absolute after:content-[""] after:top-0 after:left-0 after:right-0 after:bottom-0 after:bg-black/30 after:rounded-2xl'>
+                        <SwiperSlide key={game._id} className='w-[420px] h-[220px]'>
+                            <div className='gameSlider relative w-full h-full bg-center bg-cover p-7 overflow-hidden after:absolute after:content-[""] after:top-0 after:left-0 after:right-0 after:bottom-0 after:bg-black/50 after:rounded-2xl'>
                                 <img src={game.image} alt="Game Image" className='absolute left-0 top-0 w-full h-full object-cover object-center rounded-2xl' />
                                 <div className={`video ${active ? "active" : ""}`}>
                                     <iframe
+                                    className='bg-black/95'
                                         width="1280"
                                         height="720"
-                                        src={game.trailer}
+                                        // src={game.trailer}
                                         title={game.title}
                                         allow='accelerometer clipbord-write; excrypted-media; gyroscope; picture-in-picture;'
                                         allowFullScreen
