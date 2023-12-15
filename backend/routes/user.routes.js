@@ -39,6 +39,28 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
+userRouter.post("/logout", async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  try {
+    // Check if the token is present in the Authorization header
+    if (typeof token === "undefined") {
+      return res.status(400).json({
+        status: "fail",
+        message: "Missing token in the Authorization header",
+      });
+    }
+
+    let newToken = new BlackListModel({ token });
+    await newToken.save();
+    res
+      .status(200)
+      .json({ status: "success", message: "User has been logged out" });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ status: "fail", error: err.message });
+  }
+});
+
 module.exports = {
   userRouter
 };
