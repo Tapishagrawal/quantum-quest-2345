@@ -3,10 +3,10 @@ const { WishModel } = require("../model/wishlist.model");
 const { GameModel } = require("../model/admin.model");
 const WishRouter = express.Router();
 
-WishRouter.get("/", async (req,res)=>{
+WishRouter.get("/get", async (req,res)=>{
     try {
         const wishlist = await WishModel.find();
-        res.json(wishlist);
+        res.send(wishlist);
     } catch (error) {
         res.status(400).json({error: "Internal Server Error"});
     }
@@ -18,7 +18,8 @@ WishRouter.post("/add",async(req,res)=>{
     try {
         
         const game = await GameModel.findById(id);
-       const wishlistitem = new WishModel({game: game._id});
+
+       const wishlistitem = new WishModel({gameID: game._id});
        await wishlistitem.save();
 
        res.status(200).json({message: "Product added to Wishlist", wishlistitem});
