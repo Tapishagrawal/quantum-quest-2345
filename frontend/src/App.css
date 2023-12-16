@@ -33,3 +33,8 @@ body {
     background-color: rgb(93, 63, 195);
     border-radius: 1rem;
 }
+
+body::-webkit-scrollbar {
+    width: 5px;
+    
+}

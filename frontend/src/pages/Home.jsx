@@ -29,7 +29,7 @@ export const Home = () => {
                 <h1 className='text-xl font-semibold'>GAMES ON PROMOTION</h1>
                 <Link className='group flex items-center gap-1'>View More Games <span className='group-hover:translate-x-2 transition duration-500'><FaArrowRightLong /></span></Link>
             </div>
-            <div className='flex flex-wrap gap-2 justify-between mt-3'>
+            <div className='flex flex-wrap justify-center sm:justify-around lg:justify-between mt-10'>
                 {
                     grameSwiperData.map((item, i) => (
                         i < 8 &&
