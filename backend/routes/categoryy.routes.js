@@ -4,8 +4,6 @@ const jwt = require("jsonwebtoken")
 
 const categoryRouter =  express.Router()
 
-
-
 categoryRouter.get("/", async(req,res) => {
     try{
         const games=await GameModel.find()
