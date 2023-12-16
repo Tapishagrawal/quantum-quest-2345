@@ -2,35 +2,28 @@ const jwt = require("jsonwebtoken");
 const { BlackListModel } = require("../model/blacklist.model");
 
 const auth = async (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
-  // console.log(token);
+  try{
+    const token = req.headers.authorization?.split(" ")[1] || null;
 
-  if (!token) {
-    return res.status(400).send({ msg: `Token required` });
-  }
+    if(token){
+      let existingToken = await BlackListModel.find({ blacklist : {$in: token}});
 
-  try {
-    let tokens = await BlackListModel.find();
-
-    // if token is present in the blacklist then:
-    if (tokens.some((item) => item.token === token)) {
-      return res.status(400).json({ msg: "Token has expired" });
-    }
-
-    // if token is not present in the blacklist then decode it and check if it is valid:
-    // console.log(token);
-    jwt.verify(token, "masai", (err, decoded) => {
-      if (err) {
-        return res.status(400).json({ msg: "Invalid Token" });
-      } else if (decoded) {
-        // console.log(decoded);
-        req.user = decoded;
-        next();
+      if(existingToken.length> 0){
+        return res.status(400).send({error: "Please Login Again!!"})
       }
-    });
-  } catch (err) {
-    res.status(400).send({ msg: err });
+
+      let decode = jwt.verify(token,'masai');
+      req.body.userID = decode.userID;
+      return next();
+
+    }else{
+      res.status(400).send("Please login First...");
+    }
+  }catch(error){
+return res.status(400).send(err);
   }
+  
+ 
 };
 
 module.exports = { auth };
