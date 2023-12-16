@@ -8,6 +8,7 @@ import { IoLogInOutline } from "react-icons/io5";
 import { SlNotebook } from "react-icons/sl";
 import { Link } from "react-router-dom"
 import { LoginPageContext } from '../context/LoginPageContextProvider';
+import { ToggleMenuContext } from '../context/ToggleMenuContextProvider';
 
 const links = [
     {
@@ -46,7 +47,8 @@ const links = [
         active: false,
     }
 ]
-export const SideMenu = ({ toggleMenu }) => {
+export const SideMenu = () => {
+    const { toggleMenu } = useContext(ToggleMenuContext)
     const [navlinks, setNavLinks] = useState(links);
     const { handleToggleLoginPage } = useContext(LoginPageContext)
 
