@@ -7,6 +7,7 @@ const { categoryRouter } = require("./routes/categoryy.routes");
 
 require("dotenv").config();
 const cors = require("cors");
+const WishRouter = require("./routes/wishlist.routes");
 
 
 
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use("/users", userRouter);
 app.use("/games",gameRouter)
 app.use("/cates",categoryRouter)
-
+app.use("/wishlist",WishRouter)
 
 
 app.get("/", (req, res) => {
