@@ -27,8 +27,6 @@ gameRouter.get("/", async(req,res) => {
     }
 })
 
-
-
 gameRouter.patch("/update/:gameID", async(req,res) => {
     const {gameID} = req.params
     try{
@@ -41,8 +39,7 @@ gameRouter.patch("/update/:gameID", async(req,res) => {
         res.status(400).send({"error":err})
     }
 })
-
-
+ 
 gameRouter.delete("/delete/:gameID", async(req,res) => {
     const {gameID} = req.params
     try{
