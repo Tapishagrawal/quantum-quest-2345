@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { editGame } from '../redux/Game/action';
+import {styled} from "styled-components"
 
 export const Edit = () => {
     const dispatch=useDispatch();
@@ -16,7 +17,7 @@ export const Edit = () => {
   const [level, setLevel] = useState("");
 
   useEffect(() => {
-    const {price,title,discount,image,gender,description,category,level} = games.find(el => el.id === +id);
+    const {price,title,discount,image,description,category,level} = games.find(el => el.id === +id);
     setPrice(price);
     setDiscount(discount);
     setTitle(title);
@@ -40,24 +41,59 @@ export const Edit = () => {
      }
 
   return (
-    <div>
-      <h1>{id}</h1>
-      <input type='number' placeholder='price' value={price}
-        onChange={(e) => setPrice(+e.target.value)} />
-        <input type='number' placeholder='discount' value={discount}
-        onChange={(e) => setDiscount(+e.target.value)} />
-      <input type='text' placeholder='title' value={title}
+    <DIV>
+      <h1>Update Game {id}</h1>
+      <input type='text' placeholder='title' value={title} className="w-80 bg-white shadow rounded"
         onChange={(e) => setTitle(e.target.value)} />
-        <input type='text' placeholder='image' value={image}
-        onChange={(e) => setImage(e.target.value)} />
-      <input type='text' placeholder='description' value={description}
-        onChange={(e) => setDescription(e.target.value)} />
-      <input type='text' placeholder='category' value={category}
-        onChange={(e) => setCategory(e.target.value)} />
-      <input type='text' placeholder='level' value={level}
-        onChange={(e) => setLevel(e.target.value)} />
-      <button onClick={handleEdit}>Update Game</button>
 
-    </div>
+        <input type='text' placeholder='image' value={image} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setImage(e.target.value)} />
+
+        <input type='text' placeholder='description' value={description} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setDescription(e.target.value)} />
+
+      <input type='number' placeholder='price' value={price} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setPrice(+e.target.value)} />
+
+        <input type='number' placeholder='discount' value={discount} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setDiscount(+e.target.value)} />
+
+      <input type='text' placeholder='level' value={level} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setLevel(e.target.value)} />
+
+      <input type='text' placeholder='category' value={category} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setCategory(e.target.value)} />
+      
+      <button onClick={handleEdit} className='bg-indigo-600 px-3 rounded-md text-sm'>Update Game</button>
+
+    </DIV>
   )
 }
+
+const DIV = styled.div`
+
+width: 450px;
+margin: auto;
+padding: 40px;
+border: 1px solid gray;
+display:flex;
+  flex-direction:column;
+  gap:15px;
+  align-items:center;
+
+input,select{
+  height:35px;
+  width:100%;
+  color:black;
+  padding:5px;
+  font-size:larger;
+}
+
+button{
+  width:50%;
+  height:35px;
+  border:none;
+  cursor:pointer;
+  
+}
+`;

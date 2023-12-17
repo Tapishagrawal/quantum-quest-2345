@@ -1,4 +1,3 @@
-import React from 'react'
 import { GAME_FAILURE, GAME_REQUEST, GET_GAME_SUCCESS, 
     PATCH_GAME_SUCCESS, POST_GAME_SUCCESS } from "../actionType";
 
