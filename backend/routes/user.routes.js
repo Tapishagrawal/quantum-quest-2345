@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const { UserModel } = require("../model/user.model");
 const userRouter = express.Router();
 
 userRouter.post("/register", async (req, res) => {
@@ -64,42 +65,42 @@ userRouter.post("/logout", async (req, res) => {
   }
 });
 
-function checkPassword(password) {
-  let num = "0123456789";
-  let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let lowercase = "abcdefghijklmnopqrstuvwxyz";
-  let specialChar = "~!@#$%^&*()";
+// function checkPassword(password) {
+//   let num = "0123456789";
+//   let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   let lowercase = "abcdefghijklmnopqrstuvwxyz";
+//   let specialChar = "~!@#$%^&*()";
 
-  let flag1 = false;
-  let flag2 = false;
-  let flag3 = false;
-  let flag4 = false;
+//   let flag1 = false;
+//   let flag2 = false;
+//   let flag3 = false;
+//   let flag4 = false;
 
-  if (password.length < 8) {
-    return false;
-  }
+//   if (password.length < 8) {
+//     return false;
+//   }
 
-  for (let i=0;i<password.length;i++) {
-   if(uppercase.includes(password[i])){
-    flag1 = true;
-   }
+//   for (let i=0;i<password.length;i++) {
+//    if(uppercase.includes(password[i])){
+//     flag1 = true;
+//    }
 
-   if(num.includes(password[i])){
-    flag2 = true;
-   }
+//    if(num.includes(password[i])){
+//     flag2 = true;
+//    }
 
-   if(lowercase.includes(password[i])){
-    flag3 = true;
-   }
+//    if(lowercase.includes(password[i])){
+//     flag3 = true;
+//    }
 
-   if(specialChar.includes(password[i])){
-    flag4 = true;
-   }
-  }
+//    if(specialChar.includes(password[i])){
+//     flag4 = true;
+//    }
+//   }
 
-  return flag1 && flag2 && flag3 && flag4 ? true : false ;
+//   return flag1 && flag2 && flag3 && flag4 ? true : false ;
 
-}
+// }
 
 module.exports = {
   userRouter
