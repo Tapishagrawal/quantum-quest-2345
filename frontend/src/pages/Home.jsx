@@ -4,6 +4,7 @@ import { GameCard } from '../components/GameCard';
 import { Link } from "react-router-dom";
 import data from "../api/gameSlider.json"
 import { FaArrowRightLong } from "react-icons/fa6";
+
 export const Home = () => {
     const [grameSwiperData, setGrameSwiperData] = useState([]);
 
