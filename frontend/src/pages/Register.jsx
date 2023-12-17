@@ -16,14 +16,12 @@ export const Register = () => {
             return { ...prev, [name]: value }
         })
     }
-    
+
     const handlePostUser = (newUserdata) => {
         dispatch(postUserRegistration(newUserdata))
     }
     return (
         <div>
-            <div className='fixed top-0 left-[50%] z-[99]'> 
-            </div>
             <div onClick={handleToggleRegisterPage} className='bg-[#3031504d] backdrop-blur-sm w-full h-screen fixed top-0 left-0 z-[52]'></div>
             <div className={`fixed w-[90%] sm:w-[initial]  top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] z-[52]`}>
                 <div className='relative bg-[#152532] rounded-md w-full sm:w-[350px] flex flex-col items-center gap-3 p-7 shadow-[0px_15px_25px_rgba(109,71,222,0.15),0px_5px_10px_rgba(77,79,179,0.22)]'>
