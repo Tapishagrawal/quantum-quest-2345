@@ -18,6 +18,7 @@ export const Categories = () => {
     })
     setFilters(newFiltersData)
   }
+
   useEffect(() => {
     const loadImages = async () => {
         const loadedImages = await Promise.all(
@@ -32,6 +33,7 @@ export const Categories = () => {
 
     loadImages();
 }, []);
+
   return (
     <div>
       <div className='flex items-center justify-between'>

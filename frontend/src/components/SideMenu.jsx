@@ -9,6 +9,9 @@ import { BiSliderAlt } from "react-icons/bi";
 import { Link } from "react-router-dom"
 import { LoginPageContext } from '../context/LoginPageContextProvider';
 import { ToggleMenuContext } from '../context/ToggleMenuContextProvider';
+import { TbLogout2 } from "react-icons/tb";
+import { useSelector, useDispatch } from "react-redux"
+import { postUserLogout } from '../redux/Authentication/action';
 
 const links = [
     {
@@ -45,12 +48,22 @@ const links = [
         name: "Login",
         icon: <IoLogInOutline />,
         active: false,
+    },
+    {
+        id: 6,
+        hash: "logout",
+        name: "Logout",
+        icon: <TbLogout2 />,
+        active: false,
     }
 ]
 export const SideMenu = () => {
     const { toggleMenu, handleToggleMenu } = useContext(ToggleMenuContext)
     const [navlinks, setNavLinks] = useState(links);
     const { handleToggleLoginPage } = useContext(LoginPageContext)
+    const { token } = useSelector((store) => store.authReducer)
+    const dispatch = useDispatch()
+
 
     const handleActiveLink = (id) => {
         const updatedlinks = links.map(link => {
@@ -60,6 +73,11 @@ export const SideMenu = () => {
         })
         setNavLinks(updatedlinks)
     }
+
+    const handleLogoutGet = () => {
+        dispatch(postUserLogout(token))
+    }
+    console.log(token)
     useEffect(() => {
         const hashlink = window.location.href.split("/")[window.location.href.split("/").length - 1] || "/"
         const updatedlinks = links.map(link => {
@@ -72,7 +90,7 @@ export const SideMenu = () => {
     return (
         <div className={` relative z-[51] ${toggleMenu ? "md:w-[26%] lg:w-[20%] max-[768px]:fixed max-[768px]:w-64 max-[768px]:left-3 max-[768px]:bg-[#0D171F]" : "max-[768px]:fixed max-[768px]:w-64 max-[768px]:-left-64 md:w-[7%]"} h-[96vh] rounded-2xl p-7 shadow-[-5px_-5px_15px_rgba(255,255,255,0.1),5px_5px_15px_rgb(16,6,54,0.60)] transition-all duration-700 overflow-hidden`}>
             <span onClick={handleToggleMenu} className='absolute right-5 top-9 text-lg md:hidden'>
-                <BiSliderAlt/>
+                <BiSliderAlt />
             </span>
             <Link to={"/"} className={`${toggleMenu ? "justify-start" : "justify-center"} max-[768px]:text-2xl max-[1295px]:text-lg text-3xl flex items-center gap-3 transition-all duration-500`}>
                 <div>
@@ -82,14 +100,31 @@ export const SideMenu = () => {
             </Link>
             <div className={`flex flex-col gap-7 mt-10 ${toggleMenu ? "ml-5 max-[1235px]:ml-0" : "text-2xl items-center"} transition-all duration-500`}>
                 {
-                    navlinks.map((navlink) => (
-                        <div key={navlink.id}>
-                            <Link onClick={() => { navlink.hash !== "login" && handleActiveLink(navlink.id), navlink.hash === "login" && handleToggleLoginPage() }} to={navlink.hash !== "login" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
-                                <i>{navlink.icon}</i>
-                                <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
-                            </Link>
-                        </div>
-                    ))
+                    token ?
+                        (
+                            navlinks.map((navlink) => (
+                                navlink.id!==5 &&
+                                <div div key={navlink.id} >
+                                    <Link onClick={() => { navlink.hash !== "logout" && handleActiveLink(navlink.id), navlink.hash === "logout" && handleLogoutGet() }} to={navlink.hash !== "logout" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
+                                        <i>{navlink.icon}</i>
+                                        <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
+                                    </Link>
+                                </div>
+                            ))
+                        )
+                        :
+                        (
+                            navlinks.map((navlink) => (
+                                navlink.id!==6 &&
+                                <div key={navlink.id}>
+                                    <Link onClick={() => { navlink.hash !== "login" && handleActiveLink(navlink.id), navlink.hash === "login" && handleToggleLoginPage() }} to={navlink.hash !== "login" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
+                                        <i>{navlink.icon}</i>
+                                        <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
+                                    </Link>
+                                </div>
+                            )
+
+                            ))
                 }
                 <div className='flex items-center bg-[#1b2635] shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)] gap-3 px-3 py-1 rounded-md min-[425px]:hidden -mt-5'>
                     <div>
@@ -101,6 +136,6 @@ export const SideMenu = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

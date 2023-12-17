@@ -28,7 +28,7 @@ export const Home = () => {
             <GameSwiper />
             <div className='flex items-center justify-between mt-5'>
                 <h1 className='text-xs sm:text-2xl font-semibold'>GAMES ON PROMOTION</h1>
-                <Link className='group text-xs sm:text-lg flex items-center'>View More Games <span className='max-[333px]:group-hover:-translate-x-4 max-[333px]:-translate-x-5 group-hover:translate-x-2 translate-x-1 transition duration-500'><FaArrowRightLong /></span></Link>
+                <Link to="/categories" className='group text-xs sm:text-lg flex items-center'>View More Games <span className='max-[333px]:group-hover:-translate-x-4 max-[333px]:-translate-x-5 group-hover:translate-x-2 translate-x-1 transition duration-500'><FaArrowRightLong /></span></Link>
             </div>
             <div className='flex flex-wrap justify-center sm:justify-around lg:justify-between mt-10'>
                 {
