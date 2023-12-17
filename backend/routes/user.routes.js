@@ -82,26 +82,6 @@ userRouter.post("/logout", async (req, res) => {
 //     return false;
 //   }
 
-//   for (let i = 0; i < password.length; i++) {
-//     if (uppercase.includes(password[i])) {
-//       flag1 = true;
-//     }
-
-//     if (num.includes(password[i])) {
-//       flag2 = true;
-//     }
-
-//     if (lowercase.includes(password[i])) {
-//       flag3 = true;
-//     }
-
-//     if (specialChar.includes(password[i])) {
-//       flag4 = true;
-//     }
-//   }
-
-//   return flag1 && flag2 && flag3 && flag4 ? true : false;
-
 // }
 
 module.exports = {
