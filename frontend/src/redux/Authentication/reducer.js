@@ -3,7 +3,7 @@ import { LOGIN_POST_FAILURE, LOGIN_POST_REQUEST, LOGIN_POST_SUCCESS, REGISTER_PO
 const initialState = {
     isLoading: false,
     msg: "",
-    token: "",
+    token: JSON.parse(localStorage.getItem("token")) || null,
     isError: false,
 };
 
