@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import './App.css'
 import { SideMenu } from './components/SideMenu'
 import { Main } from './pages/Main'
@@ -11,12 +11,14 @@ function App() {
 
   return (
     <>
-      <div className='p-3 flex gap-8 justify-between transition-all'>
-        <SideMenu/>
+
+       <div className='p-3 flex gap-8 justify-between transition-all'>
+         <SideMenu/>
         <Main/>
         {isLoginPageVisibaleVisible && <Login />}
         {isRegisterPageVisibaleVisible && <Register />}
-      </div>
+       
+      </div> 
     </>
   )
 }
