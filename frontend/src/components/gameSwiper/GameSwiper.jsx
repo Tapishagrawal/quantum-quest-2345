@@ -56,7 +56,7 @@ export const GameSwiper = () => {
             >
                 {
                     grameSwiperData.map((game) => (
-                        <SwiperSlide key={game._id} className='w-[420px] h-[220px]'>
+                        <SwiperSlide key={game._id} className='max-[640px]:w-full w-[420px] h-[220px]'>
                             <div className='gameSlider relative w-full h-full bg-center bg-cover p-7 overflow-hidden after:absolute after:content-[""] after:top-0 after:left-0 after:right-0 after:bottom-0 after:bg-black/50 after:rounded-2xl'>
                                 <img src={game.image} alt="Game Image" className='absolute left-0 top-0 w-full h-full object-cover object-center rounded-2xl' />
                                 <div className={`video ${active ? "active" : ""}`}>
@@ -71,11 +71,11 @@ export const GameSwiper = () => {
                                     >
                                     </iframe>
                                 </div>
-                                <div className='content absolute bottom-2 w-[60%] z-10'>
-                                    <h2 className='font-rubik text-[2.5rem] font-bold leading-none'>{game.title}</h2>
+                                <div className='absolute bottom-2 w-[85%] sm:w-[60%] z-10 sm:left-[initial]'>
+                                    <h2 className='font-rubik text-xl sm:text-[2.5rem] font-bold leading-none'>{game.title}</h2>
                                     <p className='text-zinc-200 text-sm leading-none my-2'>{game.description}</p>
                                     <div className='buttons inline-flex items-center gap-5 '>
-                                        <button className='py-2 px-5 bg-indigo-700 rounded-lg'>Order Now</button>
+                                        <button className='py-2 px-5 max-[375px]:text-xs bg-indigo-700 rounded-lg'>Order Now</button>
                                         <button onClick={handleToggleVideo} className={`playBtn ${active ? "active" : ""}`}>
                                             <div className={`pause hidden text-xl bg-[#ffffff33] backdrop-blur-lg rounded-full p-2`}>
                                                 <FaPause />

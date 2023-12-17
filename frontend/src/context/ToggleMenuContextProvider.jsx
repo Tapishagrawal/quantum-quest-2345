@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react'
 export const ToggleMenuContext = createContext();
 
 const ToggleMenuContextProvider = ({ children }) => {
-    const [toggleMenu, setToggleMenu] = useState(true);
+    const [toggleMenu, setToggleMenu] = useState(false);
 
     const handleToggleMenu = () => {
         setToggleMenu(prev => !prev)
