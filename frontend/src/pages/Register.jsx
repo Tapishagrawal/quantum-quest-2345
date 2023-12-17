@@ -13,10 +13,13 @@ export const Register = () => {
                     <div onClick={handleToggleRegisterPage} className='absolute cursor-pointer rounded-lg top-2 right-2 py-[0.1rem] px-3 bg-[#1B2635] shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'>
                         ESC
                     </div>
-                    <div>
-                        <img className='rounded-full' src="https://placehold.co/100" alt="" />
-                    </div>
+                    <h1 className='my-5 text-xl font-bold'>REGISTRATION</h1>
                     <div className='w-full flex flex-col items-center gap-3'>
+                        <input
+                            type="text"
+                            placeholder='Enter your username'
+                            className='bg-transparent border-b focus:border-none px-2 py-1 rounded-sm w-[90%]  outline-none focus:outline-indigo-400 focus:outline-[3px]'
+                        />
                         <input
                             type="text"
                             placeholder='Enter your email id'
@@ -27,7 +30,7 @@ export const Register = () => {
                             placeholder='Enter password'
                             className='bg-transparent border-b focus:border-none px-2 py-1 rounded-sm w-[90%] outline-none focus:outline-indigo-400 focus:outline-[3px]'
                         />
-                        <button className='py-1 px-8 my-5 rounded-lg bg-[#1B2635] space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'>LOGIN</button>
+                        <button className='py-1 px-8 my-5 rounded-lg bg-[#1B2635] space-x-9 hover:scale-105 active:scale-95 active:shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3)] transition-all duration-150 shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)]'>SUBMIT</button>
                         <p>Already have account? <Link className='text-indigo-500 hover:text-indigo-400' onClick={handleToggleLoginPage} >Login</Link></p>
                     </div>
                 </div>

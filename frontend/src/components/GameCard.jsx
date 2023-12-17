@@ -30,7 +30,7 @@ export const GameCard = ({ _id, title, description, level, category, rating, dis
             <h3 className={`text-lg font-semibold ${toggleMenu ? "" : "mt-5"} transition-all duration-700 line-clamp-1`}>{title}</h3>
             <div className={`flex items-center justify-between ${toggleMenu ? "my-3" : "mt-3"} transition-all duration-700`}>
                 <p className='bg-red-700 px-1 rounded-md text-sm font-semibold'>{discount * 100}%</p>
-                <p className='text-xs line-through'>${price.toFixed(2)}</p>
+                <p className='text-xs line-through'>${price?.toFixed(2)}</p>
                 <p>${((1 - discount) * price).toFixed(2)}</p>
             </div>
             <Link className='absolute bottom-0 right-0 bg-indigo-600 p-2 rounded-tl-xl rounded-br-lg'>

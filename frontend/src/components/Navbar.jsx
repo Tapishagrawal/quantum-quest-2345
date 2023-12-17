@@ -8,7 +8,7 @@ import { ToggleMenuContext } from '../context/ToggleMenuContextProvider';
 export const Navbar = () => {
     const { handleToggleMenu } = useContext(ToggleMenuContext)
     return (
-        <div className='flex justify-between items-center z-50 py-3 bg-[#0d171f9d] backdrop-blur-sm'>
+        <div className='flex rounded-xl justify-between items-center z-50 py-3 px-3 bg-[#0d171f9d] backdrop-blur-sm'>
             <Link className='text-xl' onClick={handleToggleMenu}>
                 <BiSliderAlt />
             </Link>
