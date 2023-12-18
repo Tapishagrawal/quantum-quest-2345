@@ -57,18 +57,18 @@ const handleSubmit=(e)=>{
 
       <select name="level" value={data.level} onChange={handleChange} className="w-80 bg-white shadow rounded">
       <option value="">Select level</option>
-      <option value="entry">Entry</option>
-      <option value="median">Median</option>
-      <option value="high">High</option>
+      <option value="Entry">Entry</option>
+      <option value="Median">Median</option>
+      <option value="High">High</option>
       </select>
 
      <select name="category" value={data.category} onChange={handleChange} className="w-80 bg-white shadow rounded">
      <option value="">Select Category</option>
-      <option value="moba">MOBA</option>
-      <option value="racing">Racing</option>
-      <option value="fighting">Fighting</option>
-      <option value="battle">Battle</option>
-      <option value="rpg">RPG</option>
+      <option value="MOBA">MOBA</option>
+      <option value="Racing">Racing</option>
+      <option value="Fighting">Fighting</option>
+      <option value="Battle">Battle</option>
+      <option value="RPG">RPG</option>
      </select>
 
      <input type="text" placeholder="Rating" className="w-80 bg-white shadow rounded"

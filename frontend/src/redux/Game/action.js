@@ -8,61 +8,35 @@ export const addGame = (newGame) => (dispatch) => {
     dispatch({ type: GAME_REQUEST });
 
     axios
-       
+        .post(`${URL}/add`, newGame)
 
+        .then((res) => {
 
-    
-    .post(`${URL}/games/add`, newGame)
-    
-    .then((res) => {
-    
-    dispatch({ type: POST_GAME_SUCCESS });
-    console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    dispatch({ type: GAME_FAILURE }); });
-   
-    };
-    
-    export const getGame = (dispatch) => { 
-        dispatch({ type: GAME_REQUEST});
-    
-    axios
-    .get(`${URL}/games/`)
-    .then((res) => {
-    dispatch({ type: GET_GAME_SUCCESS, payload: res.data });
-    console.log(res.data)
+            dispatch({ type: POST_GAME_SUCCESS });
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: GAME_FAILURE });
+        });
 
-    return res.data;
-     })
-    .catch((err) => {
-        console.log(err);
-    dispatch({ type: GAME_FAILURE }); 
-    });
-    
-    
-    };
-
-   
-
-
-
-export const deleteGame =(id)=>(dispatch)=>{
-   return axios.delete(`${URL}/games/delete/${id}`)
-    .then((res)=>{
-        console.log(res);
-    dispatch({type:GAME_DELETE, payload:id})
-    })
-    .catch((err)=>{
-        console.log(err);
-
-    })
 };
 
 
+export const getGame = (params) => (dispatch) => {
+    dispatch({ type: GAME_REQUEST });
 
+    axios
+        .get(`${URL}/games`, params)
+        .then((res) => {
+            dispatch({ type: GET_GAME_SUCCESS, payload: res.data });
+            return res.data
+        })
+        .catch((err) => {
+            dispatch({ type: GAME_FAILURE });
+        });
 
+}
 
 
 export const editGame = (id, data) => (dispatch) => {
@@ -77,3 +51,14 @@ export const editGame = (id, data) => (dispatch) => {
         })
 }
 
+export const deleteGame = (id) => (dispatch) => {
+    return axios.delete(`${URL}/games/delete/${id}`)
+        .then((res) => {
+            console.log(res);
+            dispatch({ type: GAME_DELETE, payload: id })
+        })
+        .catch((err) => {
+            console.log(err);
+
+        })
+}
