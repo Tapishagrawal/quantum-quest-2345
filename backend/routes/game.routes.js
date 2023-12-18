@@ -18,9 +18,16 @@ gameRouter.post("/add", async(req,res)=>{
 })
 
 gameRouter.get("/", async(req,res) => {
+    const {category} = req.query;
     try{
-        const games=await GameModel.find()
-        res.status(200).send(games)
+        if(category){
+            const games=await GameModel.find({category})
+            res.status(200).send(games)
+        }else{
+            const games=await GameModel.find()
+            res.status(200).send(games)
+
+        }
     }
     catch(err){
         res.status(400).send({"error":err})
@@ -31,11 +38,12 @@ gameRouter.patch("/update/:gameID", async(req,res) => {
     const {gameID} = req.params
     try{
         
-            await GameModel.findByIdAndUpdate({_id:gameID},req.body) 
-            res.status(200).send({"msg":`Game with ID:${gameID} has been updated`})
+            let data = await GameModel.findByIdAndUpdate({_id:gameID},req.body) 
+            res.status(200).send({"msg":`Game with ID:${gameID} has been updated`, data})
        
     }
     catch(err){
+        console.log(err)
         res.status(400).send({"error":err})
     }
 })

@@ -1,7 +1,7 @@
 export const filterListData = [
     {
         _id: 1,
-        name: "All",
+        name: "",
         active: true
     },
     {

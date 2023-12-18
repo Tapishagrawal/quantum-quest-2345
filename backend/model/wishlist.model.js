@@ -11,8 +11,10 @@ const wishSchema = mongoose.Schema({
    img: String,
    trailer: String,
    active: String,
-   userID: String
-});
+   userID: String,
+   library: Boolean,
+   bag: Boolean
+},{versionKey:false});
 
 const WishModel = mongoose.model("wishlist",wishSchema)
 
