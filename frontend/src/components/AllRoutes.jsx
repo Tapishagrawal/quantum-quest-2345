@@ -18,7 +18,7 @@ export const AllRoutes = () => {
             <Route path='/bag' element={<Bag />} />
             <Route path='/admin' element={<Admin/>} />
             <Route path='/addgame' element={<AddGame/>} />
-            <Route path='/editgame' element={<Edit/>} />
+            <Route path='/editgame/:id' element={<Edit/>} />
             <Route path='/user' element={<Admin/>} />
         </Routes>
     )

@@ -11,7 +11,7 @@ export const addGame= (newGame) => (dispatch) => {
     axios
 
     
-    .post(`${URL}/add`, newGame)
+    .post(`${URL}/games/add`, newGame)
     
     .then((res) => {
     
@@ -24,13 +24,16 @@ export const addGame= (newGame) => (dispatch) => {
    
     };
     
-    export const getGame = (paramObj) => (dispatch) => { 
+    export const getGame = (dispatch) => { 
         dispatch({ type: GAME_REQUEST});
     
     axios
-    .get(`${URL}`,paramObj)
+    .get(`${URL}/games/`)
     .then((res) => {
     dispatch({ type: GET_GAME_SUCCESS, payload: res.data });
+    console.log(res.data)
+
+    return res.data;
      })
     .catch((err) => {
         console.log(err);
@@ -42,7 +45,7 @@ export const addGame= (newGame) => (dispatch) => {
 
     export const editGame =(id,data)=>(dispatch)=>{
         dispatch({type:GAME_REQUEST});
-        axios.patch(`${URL}/update/${id}`,data)
+        axios.patch(`${URL}/games/update/${id}`,data)
         .then((res)=>{
             console.log(res);
         dispatch({type:PATCH_GAME_SUCCESS})
