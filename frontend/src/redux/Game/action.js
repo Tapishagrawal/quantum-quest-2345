@@ -8,48 +8,19 @@ export const addGame = (newGame) => (dispatch) => {
     dispatch({ type: GAME_REQUEST });
 
     axios
-    .post(`${URL}/add`, newGame)
-    
-    .then((res) => {
-    
-    dispatch({ type: POST_GAME_SUCCESS });
-    console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    dispatch({ type: GAME_FAILURE }); });
-   
-    };
-    
-    export const getGame = (paramObj) => (dispatch) => { 
-        dispatch({ type: GAME_REQUEST});
-    
-    axios
-    .get(`${URL}`,paramObj)
-    .then((res) => {
-    dispatch({ type: GET_GAME_SUCCESS, payload: res.data });
-     })
-    .catch((err) => {
-        console.log(err);
-    dispatch({ type: GAME_FAILURE }); 
-    });
-    
-    
-    };
+        .post(`${URL}/add`, newGame)
 
-    export const editGame =(id,data)=>(dispatch)=>{
-        dispatch({type:GAME_REQUEST});
-        axios.patch(`${URL}/update/${id}`,data)
-        .then((res)=>{
+        .then((res) => {
+
+            dispatch({ type: POST_GAME_SUCCESS });
             console.log(res);
-        dispatch({type:PATCH_GAME_SUCCESS})
         })
-        .catch((err)=>{
+        .catch((err) => {
             console.log(err);
-            dispatch({type:GAME_FAILURE})
+            dispatch({ type: GAME_FAILURE });
+        });
 
-
-       
+};
 
 
 export const getGame = (params) => (dispatch) => {
@@ -64,14 +35,14 @@ export const getGame = (params) => (dispatch) => {
             dispatch({ type: GAME_FAILURE });
         });
 
-
+}
 
 
 export const editGame = (id, data) => (dispatch) => {
     dispatch({ type: GAME_REQUEST });
     axios.patch(`${URL}/games/update/${id}`, data)
         .then((res) => {
-            dispatch({ type: PATCH_GAME_SUCCESS})
+            dispatch({ type: PATCH_GAME_SUCCESS })
             dispatch(getGame())
         })
         .catch((err) => {
