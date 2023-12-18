@@ -12,8 +12,8 @@ export const Home = () => {
         const loadImages = async () => {
             const loadedImages = await Promise.all(
                 data.map(async (game) => {
-                    const { default: image } = await import(/* @vite-ignore */ `../assets/games/${game.img}`);
-                    return { ...game, image };
+                    const { default: img } = await import(/* @vite-ignore */ `../assets/games/${game.img}`);
+                    return { ...game, img };
                 })
             );
 

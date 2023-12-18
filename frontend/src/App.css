@@ -38,3 +38,10 @@ body::-webkit-scrollbar {
     width: 5px;
     
 }
+.heartColor.active path{
+    color:#5465b8
+}
+
+.bagColor.active path{
+    color:#151319
+}

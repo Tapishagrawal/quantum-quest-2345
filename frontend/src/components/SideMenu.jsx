@@ -57,6 +57,7 @@ const links = [
         active: false,
     }
 ]
+
 export const SideMenu = () => {
     const { toggleMenu, handleToggleMenu } = useContext(ToggleMenuContext)
     const [navlinks, setNavLinks] = useState(links);
@@ -77,7 +78,6 @@ export const SideMenu = () => {
     const handleLogoutGet = () => {
         dispatch(postUserLogout(token))
     }
-    console.log(token)
     useEffect(() => {
         const hashlink = window.location.href.split("/")[window.location.href.split("/").length - 1] || "/"
         const updatedlinks = links.map(link => {
@@ -99,32 +99,26 @@ export const SideMenu = () => {
                 <span className={`${toggleMenu ? "" : "md:hidden"} font-bold font-rubik`}>GameSwap</span>
             </Link>
             <div className={`flex flex-col gap-7 mt-10 ${toggleMenu ? "ml-5 max-[1235px]:ml-0" : "text-2xl items-center"} transition-all duration-500`}>
-                {
-                    token ?
-                        (
-                            navlinks.map((navlink) => (
-                                navlink.id!==5 &&
-                                <div div key={navlink.id} >
-                                    <Link onClick={() => { navlink.hash !== "logout" && handleActiveLink(navlink.id), navlink.hash === "logout" && handleLogoutGet() }} to={navlink.hash !== "logout" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
-                                        <i>{navlink.icon}</i>
-                                        <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
-                                    </Link>
-                                </div>
-                            ))
-                        )
-                        :
-                        (
-                            navlinks.map((navlink) => (
-                                navlink.id!==6 &&
-                                <div key={navlink.id}>
-                                    <Link onClick={() => { navlink.hash !== "login" && handleActiveLink(navlink.id), navlink.hash === "login" && handleToggleLoginPage() }} to={navlink.hash !== "login" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
-                                        <i>{navlink.icon}</i>
-                                        <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
-                                    </Link>
-                                </div>
-                            )
-
-                            ))
+                {token ?
+                    navlinks.map((navlink) => (
+                        navlink.id !== 5 &&
+                        <div key={navlink.id}>
+                            <Link onClick={() => { navlink.hash !== "logout" && handleActiveLink(navlink.id), navlink.hash === "logout" && handleLogoutGet() }} to={navlink.hash !== "logout" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
+                                <i>{navlink.icon}</i>
+                                <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
+                            </Link>
+                        </div>
+                    ))
+                    :
+                    navlinks.map((navlink) => (
+                        navlink.id !== 6 &&
+                        <div key={navlink.id}>
+                            <Link onClick={() => { navlink.hash !== "login" && handleActiveLink(navlink.id), navlink.hash === "login" && handleToggleLoginPage() }} to={navlink.hash !== "login" && navlink.hash} className={`flex items-center gap-3 py-1 px-2 ${navlink.active ? "border-2 shadow-[#553ac78a_0px_8px_24px]" : ""} rounded-md hover:bg-[#1b2b39b3] transition duration-300`}>
+                                <i>{navlink.icon}</i>
+                                <span className={`line-clamp-1 ${toggleMenu ? "" : "md:hidden"}`}>{navlink.name}</span>
+                            </Link>
+                        </div>
+                    ))
                 }
                 <div className='flex items-center bg-[#1b2635] shadow-[0px_2px_4px_rgba(0,0,0,0.4),0px_7px_13px_-3px_rgba(0,0,0,0.3),0px_-3px_0px_inset_rgba(0,0,0,0.2)] gap-3 px-3 py-1 rounded-md min-[425px]:hidden -mt-5'>
                     <div>
