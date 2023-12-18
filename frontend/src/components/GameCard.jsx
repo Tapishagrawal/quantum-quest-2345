@@ -11,10 +11,12 @@ export const GameCard = ({ _id, title, description, level, category, rating, dis
        
         <div className={`group relative w-[280px] sm:w-[45%] ${toggleMenu ? "h-[300px] lg:w-[24%]" : "h-[320px] lg:w-[22%]"} p-3 pb-0 shadow-[-5px_-5px_15px_rgba(255,255,255,0.2),5px_5px_15px_rgb(16,6,54,0.60)] rounded-lg mb-4 transition-all duration-700`}>
 
-             <Link to={`/game/${_id}`}>
+            
 
             <div className={`w-full h-[50%] overflow-hidden rounded-md`}>
+            <Link to={`/game/${_id}`}>
                 <img className='w-full h-full object-cover object-center group-hover:scale-105 transition duration-500' src={img} alt="game poster" />
+                </Link>
             </div>
             {
                 library ? (
@@ -64,7 +66,7 @@ export const GameCard = ({ _id, title, description, level, category, rating, dis
                     </Link>
                 )
             }
-
+           
         </div>
         
     )

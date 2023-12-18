@@ -20,8 +20,12 @@ export const Gamedetails = () => {
     // }, [searchParams]);
 
     useEffect(()=>{
-         //dispatch(getGame());
-         getGame(dispatch);
+      //setSearchParams()
+      const paramObj = {
+        
+      }
+      dispatch(getGame({ params: paramObj }))
+        //  getGame(dispatch);
        }, [])
 
        const handleRemoveGame = (id) => {

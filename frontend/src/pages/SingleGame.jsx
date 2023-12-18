@@ -20,7 +20,9 @@ export const SingleGame = () => {
       <div>
         <img src={data.img}/>
         <h1>{data.title}</h1>
+        <p>lorem20</p>
       </div>
     </div>
   )
 }
+
