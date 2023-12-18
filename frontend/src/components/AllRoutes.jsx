@@ -8,6 +8,7 @@ import { Login } from '../pages/Login'
 import { Admin } from '../pages/Admin'
 import { AddGame } from '../pages/AddGame'
 import { Edit } from '../pages/Edit'
+import { SingleGame } from '../pages/SingleGame'
 
 export const AllRoutes = () => {
     return (
@@ -18,8 +19,10 @@ export const AllRoutes = () => {
             <Route path='/bag' element={<Bag />} />
             <Route path='/admin' element={<Admin/>} />
             <Route path='/addgame' element={<AddGame/>} />
-            <Route path='/editgame' element={<Edit/>} />
+            <Route path='/editgame/:id' element={<Edit/>} />
+            <Route path='/game/:id' element={<SingleGame/>} />
             <Route path='/user' element={<Admin/>} />
+
         </Routes>
     )
 }

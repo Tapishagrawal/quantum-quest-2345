@@ -11,6 +11,7 @@ const initialState={
   price:0,
   category:"",
   discount:0,
+  rating:"",
 };
 
 export const AddGame = () => {
@@ -69,6 +70,11 @@ const handleSubmit=(e)=>{
       <option value="battle">Battle</option>
       <option value="rpg">RPG</option>
      </select>
+
+     <input type="text" placeholder="Rating" className="w-80 bg-white shadow rounded"
+      name="rating"
+      value={data.rating}
+      onChange={handleChange}/>
 
      <button type="submit" className='bg-indigo-600 px-3 rounded-md text-sm'>Add Game</button>
 

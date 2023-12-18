@@ -1,26 +1,38 @@
 import  { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux"
-import {getGame} from "../redux/Game/action";
-import { useSearchParams } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteGame, getGame} from "../redux/Game/action";
+import { Link } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
 export const Gamedetails = () => {
     const dispatch=useDispatch();
-    const games = useSelector((store) => store.gamesReducer.games)
-    const [searchParams]=useSearchParams();
+    const games = useSelector((store) => store.gamesReducer.games);
+    //const [searchParams]=useSearchParams();
     
-    const paramObj = {
-      params:{
-         limit:10,
-         //page
-      },
-    };
+    // const paramObj = {
+    //   params:{
+    //      limit:10,
+    //      //page
+    //   },
+    // };
     
+    // useEffect(()=>{
+    //   dispatch(getGame(paramObj));
+    // }, [searchParams]);
+
     useEffect(()=>{
-      dispatch(getGame(paramObj));
-    }, [searchParams])
+         //dispatch(getGame());
+         getGame(dispatch);
+       }, [])
+
+       const handleRemoveGame = (id) => {
+        dispatch(deleteGame(id));
+      };
+
+console.log(games);
       return (
-        <div>
+        <div >
        
-          <table className="table-fixed border-separate border-spacing-2 border border-slate-400 ...">
+          <table style={{width:"100%", margin:"15px"}} className="table-fixed border-separate border-spacing-4 border border-slate-400 ...">
       <thead>
         <tr>
           <th className="border border-slate-300 ...">Title</th>
@@ -31,20 +43,23 @@ export const Gamedetails = () => {
         </tr>
       </thead>
       <tbody>
-      {games?.map((el,i)=>{
-            (
-              <tr key={i}>
+      {games.length>0 && games.map((el)=>{
+            return(
+              <tr key={el.id} className="border border-slate-300 ...">
           <td>{el.title}</td>
           <td>{el.category}</td>
           <td>{el.level}</td>
           <td>
-          <button className='bg-indigo-600 px-3 rounded-md text-sm'>Update</button>
+          <button className='bg-indigo-600 px-3 rounded-md text-sm'><Link to={`/editgame/${el._id}`}>Update</Link></button>
           </td>
           <td>
-          <button className='bg-indigo-600 px-3 rounded-md text-sm'>Delete</button>
+          <button className='bg-indigo-600 px-3 rounded-md text-sm' 
+          onClick={()=>handleRemoveGame(el._id)}>Delete</button>
           </td>
         </tr>
             )
+              
+            
           })}
         
         </tbody>

@@ -1,5 +1,5 @@
 
-import { GAME_FAILURE, GAME_REQUEST, GET_GAME_SUCCESS, 
+import { GAME_DELETE, GAME_FAILURE, GAME_REQUEST, GET_GAME_SUCCESS, 
     PATCH_GAME_SUCCESS, POST_GAME_SUCCESS } from "../actionType";
 
 
@@ -27,14 +27,13 @@ export const reducer = (state = initialState, { type, payload }) => {
         case GET_GAME_SUCCESS:
             return { ...state, isLoading: false, games: payload };
         case PATCH_GAME_SUCCESS:
-            // const updatedData = state.games.map(game =>{
-            //     if (game._id === payload) {
-            //         return { ...game, library: !game.library };
-            //     } else {
-            //         return game;
-            //     }
-            // })
-            return { ...state, isLoading: false, isError:false };
+
+            return { ...state, isLoading: false };
+            case GAME_DELETE:
+                return {...state, games: state.games.filter((game)=>game.id !== payload)}
+
+            
+
         default:
 
             return state;

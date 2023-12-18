@@ -63,6 +63,16 @@ userRouter.post("/logout", async (req, res) => {
   }
 });
 
+userRouter.get("/", async(req,res) => {
+  try{
+      const users=await UserModel.find()
+      res.status(200).send(users)
+  }
+  catch(err){
+      res.status(400).send({"error":err})
+  }
+})
+
 // function checkPassword(password) {
 //   let num = "0123456789";
 //   let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

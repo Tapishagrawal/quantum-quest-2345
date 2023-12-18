@@ -15,9 +15,12 @@ export const Edit = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [level, setLevel] = useState("");
+  const [rating, setRating] = useState("");
+
+  console.log(games);
 
   useEffect(() => {
-    const {price,title,discount,image,description,category,level} = games.find(el => el.id === +id);
+    const {id,price,title,discount,image,description,category,level} = games.length>0 && games.find(el => el._id == id);
     setPrice(price);
     setDiscount(discount);
     setTitle(title);
@@ -25,6 +28,7 @@ export const Edit = () => {
     setDescription(description);
     setCategory(category);
     setLevel(level);
+    setRating(rating);
   }, [])
 
   const handleEdit=()=>{
@@ -35,7 +39,8 @@ export const Edit = () => {
      discount,
      description,
      category,
-     level
+     level,
+     rating
     }
     dispatch(editGame(id,data))
      }
@@ -43,27 +48,44 @@ export const Edit = () => {
   return (
     <DIV>
       <h1>Update Game {id}</h1>
-      <input type='text' placeholder='title' value={title} className="w-80 bg-white shadow rounded"
+      <input type='text' placeholder='Title' value={title} className="w-80 bg-white shadow rounded"
         onChange={(e) => setTitle(e.target.value)} />
 
-        <input type='text' placeholder='image' value={image} className="w-80 bg-white shadow rounded"
+        <input type='text' placeholder='Image' value={image} className="w-80 bg-white shadow rounded"
         onChange={(e) => setImage(e.target.value)} />
 
-        <input type='text' placeholder='description' value={description} className="w-80 bg-white shadow rounded"
+        <input type='text' placeholder='Description' value={description} className="w-80 bg-white shadow rounded"
         onChange={(e) => setDescription(e.target.value)} />
 
-      <input type='number' placeholder='price' value={price} className="w-80 bg-white shadow rounded"
+      <input type='number' placeholder='Price' value={price} className="w-80 bg-white shadow rounded"
         onChange={(e) => setPrice(+e.target.value)} />
 
-        <input type='number' placeholder='discount' value={discount} className="w-80 bg-white shadow rounded"
+        <input type='number' placeholder='Discount' value={discount} className="w-80 bg-white shadow rounded"
         onChange={(e) => setDiscount(+e.target.value)} />
 
-      <input type='text' placeholder='level' value={level} className="w-80 bg-white shadow rounded"
-        onChange={(e) => setLevel(e.target.value)} />
+      {/* <input type='text' placeholder='level' value={level} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setLevel(e.target.value)} /> */}
+        <select name="level" value={level} onChange={(e) => setLevel(e.target.value)} className="w-80 bg-white shadow rounded">
+      <option value="">Select level</option>
+      <option value="Entry">Entry</option>
+      <option value="Median">Median</option>
+      <option value="High">High</option>
+      </select>
 
-      <input type='text' placeholder='category' value={category} className="w-80 bg-white shadow rounded"
-        onChange={(e) => setCategory(e.target.value)} />
+      {/* <input type='text' placeholder='category' value={category} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setCategory(e.target.value)} /> */}
+        <select name="category" value={category} onChange={(e) => setCategory(e.target.value)} className="w-80 bg-white shadow rounded">
+     <option value="">Select Category</option>
+      <option value="MOBA">MOBA</option>
+      <option value="Racing">Racing</option>
+      <option value="Fighting">Fighting</option>
+      <option value="Battle">Battle</option>
+      <option value="RPG">RPG</option>
+     </select>
       
+     <input type='number' placeholder='Rating' value={rating} className="w-80 bg-white shadow rounded"
+        onChange={(e) => setRating(+e.target.value)} />
+
       <button onClick={handleEdit} className='bg-indigo-600 px-3 rounded-md text-sm'>Update Game</button>
 
     </DIV>
@@ -75,10 +97,11 @@ const DIV = styled.div`
 width: 450px;
 margin: auto;
 padding: 40px;
+padding-bottom:20px;
 border: 1px solid gray;
 display:flex;
   flex-direction:column;
-  gap:15px;
+  gap:10px;
   align-items:center;
 
 input,select{
@@ -87,6 +110,10 @@ input,select{
   color:black;
   padding:5px;
   font-size:larger;
+}
+
+option{
+  color:black;
 }
 
 button{
