@@ -7,6 +7,12 @@ export const GET_GAME_SUCCESS= "GET_GAME_SUCCESS";
 export const PATCH_GAME_SUCCESS="PATCH_GAME_SUCCESS"
 
 
+export const USER_REQUEST = "USER_REQUEST";
+export const USER_FAILURE ="USER_FAILURE";
+
+export const GET_USER_SUCCESS= "GET_USER_SUCCESS";
+
+
 
 //For Authentication...
 export const LOGIN_POST_REQUEST= "LOGIN_POST_REQUEST";
