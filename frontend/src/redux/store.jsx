@@ -4,11 +4,17 @@ import {thunk} from "redux-thunk";
 import { reducer as gamesReducer } from "./Game/reducer";
 import { reducer as authReducer } from "./Authentication/reducer";
 import {reducer as usersReducer} from "./User/reducer";
+import { reducer as wishListReducer } from "./LibraryPost/reducer";
+import { reducer as bagReducer } from "./BagRedux/reducer";
 
  const rootReducer = combineReducers({
     gamesReducer,
-   usersReducer,
-    authReducer
+    authReducer,
+    wishListReducer,
+    usersReducer,
+    bagReducer
+
+
 
 });
 

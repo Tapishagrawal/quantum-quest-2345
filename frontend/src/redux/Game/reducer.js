@@ -27,7 +27,14 @@ export const reducer = (state = initialState, { type, payload }) => {
         case GET_GAME_SUCCESS:
             return { ...state, isLoading: false, games: payload };
         case PATCH_GAME_SUCCESS:
-            return { ...state, isLoading: false };
+            // const updatedData = state.games.map(game =>{
+            //     if (game._id === payload) {
+            //         return { ...game, library: !game.library };
+            //     } else {
+            //         return game;
+            //     }
+            // })
+            return { ...state, isLoading: false, isError:false };
         default:
 
             return state;

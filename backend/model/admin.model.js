@@ -11,7 +11,9 @@ const gameSchema = mongoose.Schema({
    img: String,
    trailer: String,
    active: String,
-   userID: String
+   userID: String,
+   library: Boolean,
+   bag: Boolean,
 },{
     versionKey: false
 })

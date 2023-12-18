@@ -11,8 +11,6 @@ const WishRouter = require("./routes/wishlist.routes");
 const BagRouter = require("./routes/bag.routes");
 
 
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -22,11 +20,6 @@ app.use("/games",gameRouter)
 app.use("/cates",categoryRouter)
 app.use("/wishlist",WishRouter)
 app.use("/baglist", BagRouter);
-
-
-app.get("/", (req, res) => {
-  res.send("hi");
-});
 
 app.listen(process.env.port, async () => {
   try {
