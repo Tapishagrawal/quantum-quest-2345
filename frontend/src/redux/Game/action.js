@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GAME_FAILURE, GAME_REQUEST, GET_GAME_SUCCESS, PATCH_GAME_SUCCESS, POST_GAME_SUCCESS } from "../actionType";
+import { GAME_DELETE, GAME_FAILURE, GAME_REQUEST, GET_GAME_SUCCESS, PATCH_GAME_SUCCESS, POST_GAME_SUCCESS } from "../actionType";
 
 
 const URL=import.meta.env.VITE_API_URL;
@@ -54,11 +54,17 @@ export const addGame= (newGame) => (dispatch) => {
             console.log(err);
             dispatch({type:GAME_FAILURE})
 
-
-       
-
-
-
-
         })
-}
+};
+
+export const deleteGame =(id)=>(dispatch)=>{
+   return axios.delete(`${URL}/games/delete/${id}`)
+    .then((res)=>{
+        console.log(res);
+    dispatch({type:GAME_DELETE, payload:id})
+    })
+    .catch((err)=>{
+        console.log(err);
+
+    })
+};

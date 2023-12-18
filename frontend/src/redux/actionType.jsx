@@ -1,4 +1,5 @@
 export const GAME_REQUEST = "GAME_REQUEST";
+export const GAME_DELETE = "GAME_DELETE";
 
 export const GAME_FAILURE ="GAME_FAILURE";
 export const POST_GAME_SUCCESS= "POST_GAME_SUCCESS";

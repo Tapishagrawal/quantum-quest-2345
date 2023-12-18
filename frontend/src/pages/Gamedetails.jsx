@@ -1,6 +1,6 @@
 import  { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getGame} from "../redux/Game/action";
+import {deleteGame, getGame} from "../redux/Game/action";
 import { Link } from "react-router-dom";
 //import { useSearchParams } from "react-router-dom";
 export const Gamedetails = () => {
@@ -23,6 +23,10 @@ export const Gamedetails = () => {
          //dispatch(getGame());
          getGame(dispatch);
        }, [])
+
+       const handleRemoveGame = (id) => {
+        dispatch(deleteGame(id));
+      };
 
 console.log(games);
       return (
@@ -49,7 +53,8 @@ console.log(games);
           <button className='bg-indigo-600 px-3 rounded-md text-sm'><Link to={`/editgame/${el._id}`}>Update</Link></button>
           </td>
           <td>
-          <button className='bg-indigo-600 px-3 rounded-md text-sm'>Delete</button>
+          <button className='bg-indigo-600 px-3 rounded-md text-sm' 
+          onClick={()=>handleRemoveGame(el._id)}>Delete</button>
           </td>
         </tr>
             )

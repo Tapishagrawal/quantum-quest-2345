@@ -15,8 +15,8 @@ export const Admin = () => {
    </DIV>
 
    <div>
-    <Userdetail/>
-    {/* <Gamedetails/> */}
+    {/* <Userdetail/> */}
+    <Gamedetails/>
    </div>
 
     </div>
