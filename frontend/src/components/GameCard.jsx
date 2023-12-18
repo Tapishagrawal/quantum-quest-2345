@@ -54,7 +54,6 @@ export const GameCard = ({ _id, title, description, level, category, rating, dis
                 (
                     <Link onClick={() => handleRemoveFrombag(_id, { bag: !bag })} className='absolute bottom-0 right-0 bg-indigo-600 p-2 rounded-tl-xl rounded-br-lg'>
                         <IoBagAdd className={`bagColor active`} />
-                        
                     </Link>
 
                 ) :
